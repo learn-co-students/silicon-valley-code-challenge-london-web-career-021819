@@ -41,7 +41,7 @@ class VentureCapitalist
     max_round
   end
 
-  def invested(domain) #Doesnt work
+  def invested(domain)
     domains = FundingRound.all.select{|round| round.startup.domain == domain}
     total = 0
     domains.each do |round|
