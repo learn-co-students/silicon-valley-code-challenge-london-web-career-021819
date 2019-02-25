@@ -31,12 +31,14 @@ class VentureCapitalist
 
   def biggest_investment
     maximum = 0
+    max_round = nil
     funding_rounds.each do |round|
       if round.investment > maximum
         maximum = round.investment
+        max_round = round
       end
     end
-    maximum
+    max_round
   end
 
   def invested(domain) #Doesnt work
