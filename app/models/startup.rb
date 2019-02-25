@@ -25,7 +25,7 @@ class Startup
   end
 
   def self.domains
-    self.all.map {|startup| startup.domain}
+    self.all.map {|startup| startup.domain}.uniq
   end
 
   def sign_contract(venture_capitalist, type, investment)
@@ -57,11 +57,8 @@ class Startup
   end
 
   def big_investors
-    big_investors = []
-    investors.each do |investor|
-      big_investors << investor if VentureCapitalist.tres_commas_club.include?(investor)
-    end
-    big_investors.uniq
+    investors.select {|investor|
+       VentureCapitalist.tres_commas_club.include?(investor)}.uniq
   end
 
 
