@@ -23,29 +23,27 @@ class VentureCapitalist
   end
 
   def funding_rounds
-    funding_rounds = []
-    FundingRound.all.each do |funding_round|
-      funding_rounds << funding_round if funding_round.venture_capitalist == self
+    FundingRound.all.select do |funding_round|
+      funding_round.venture_capitalist == self
     end
-    funding_rounds
   end
 
   def portfolio
-    portfolio = []
-    funding_rounds.each do
-      |funding_round| portfolio << funding_round.startup
-    end
-    portfolio.uniq
+    funding_rounds.map {|funding_round| funding_round.startup}.uniq
   end
 
+  # def biggest_investment
+  #   max_investment = 0
+  #   funding_rounds.each do |funding_round|
+  #     while max_investment < funding_round.investment
+  #       max_investment = funding_round.investment
+  #     end
+  #   end
+  #   funding_rounds.find {|funding_round| funding_round.investment == max_investment}
+  # end
+
   def biggest_investment
-    max_investment = 0
-    funding_rounds.each do |funding_round|
-      while max_investment < funding_round.investment
-        max_investment = funding_round.investment
-      end
-    end
-    funding_rounds.find {|funding_round| funding_round.investment == max_investment}
+    funding_rounds.map {|funding_round| funding_round.investment}.max
   end
 
   def invested(domain)
@@ -53,7 +51,7 @@ class VentureCapitalist
     funding_rounds.each do |funding_round|
       total += funding_round.investment if funding_round.startup.domain == domain
     end
-    total 
+    total
   end
 
 end
