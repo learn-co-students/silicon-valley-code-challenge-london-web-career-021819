@@ -54,7 +54,7 @@ class Startup
   end
 
   def big_investors
-    VentureCapitalist.tres_commas_club.include?(investors)
+    investors.select {|investor| VentureCapitalist.tres_commas_club.include?(investor)}
   end
 
 
