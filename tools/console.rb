@@ -36,5 +36,8 @@ round4 = FundingRound.new(tesco, nico, "Series A", 999000888999.09)
 
 # VentureCapitalist#offer_contract
 
+#VentureCapitalist#invested
+nico.invested("www.tesco.com")
+
 binding.pry
 "pry pry pry"

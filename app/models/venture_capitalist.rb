@@ -37,7 +37,9 @@ class VentureCapitalist
   end
 
   def invested(domain)
-    FundingRound.all
+    results = funding_rounds.map {|rounds| rounds.investment}
+    results.inject :+
   end
+
 
 end
