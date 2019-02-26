@@ -23,8 +23,8 @@ class Startup
   end
 
   def self.find_by_founder(founders_name)
-    self.all.find do |nam|
-      nam.founder == founder_name
+    self.all.find do |start|
+      start.founder == founder_name
   end
 end
 
@@ -57,6 +57,11 @@ end
     end
   end
 
+  def big_investors
+    investors.select do |investor|
+      VentureCapitalist.tres_commas_club.include?(investor)
+    end
+  end
 
 
 end

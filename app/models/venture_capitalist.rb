@@ -37,8 +37,19 @@ class VentureCapitalist
   end
 end
 
-  # def biggest_investment
-  #
+   def biggest_investment
+     biggest = FundingRound.all.map do |rounds|
+       rounds.investment.sort
+    return biggest[-1]
+   end
+ end
+
+ def invested(domain)
+   funding_rounds.select do |domain|
+      fund.startup.domain == domain
+    end
+ end
+
 
 
 
